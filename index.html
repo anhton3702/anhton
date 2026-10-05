@@ -3,246 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xin Chào Thế Giới</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'sparkle': 'sparkle 2s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        },
-                        sparkle: {
-                            '0%, 100%': { opacity: 0.2, transform: 'scale(0.8)' },
-                            '50%': { opacity: 1, transform: 'scale(1.2)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Trang chính - Sidebar Navigation</title>
     <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f1f5f9;
+            color: #334155;
         }
-        .bg-gradient-soft {
-            background: radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.4) 0%, rgba(255, 255, 255, 0) 50%),
-                        radial-gradient(circle at 80% 80%, rgba(173, 216, 230, 0.4) 0%, rgba(255, 255, 255, 0) 50%),
-                        radial-gradient(circle at 50% 50%, rgba(255, 239, 213, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 260px;
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+            padding: 0 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #94a3b8;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: #1e293b;
+            color: #38bdf8;
+        }
+
+        /* Content Styling */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.6;
         }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col justify-between items-center font-sans text-slate-800 antialiased overflow-x-hidden bg-gradient-soft selection:bg-rose-200 selection:text-rose-900">
+<body>
 
-    <!-- Background Floating Light Blobs -->
-    <div class="fixed top-12 left-10 w-72 h-72 bg-rose-200/40 rounded-full filter blur-3xl animate-pulse-slow pointer-events-none"></div>
-    <div class="fixed bottom-12 right-10 w-80 h-80 bg-sky-200/40 rounded-full filter blur-3xl animate-pulse-slow pointer-events-none" style="animation-delay: 2s;"></div>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">⚡ Dashboard</div>
+        <ul class="nav-menu">
+            <li>
+                <a href="index.html" class="nav-link active">
+                    <span>🏠 Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <!-- Đường dẫn tới file ton.html -->
+                <a href="ton.html" class="nav-link">
+                    <span>👤 Trang Tôn</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
 
-    <!-- Top Header -->
-    <header class="w-full max-w-5xl px-6 py-6 flex justify-between items-center z-10">
-        <div class="flex items-center space-x-3 group cursor-pointer">
-            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-400 to-teal-400 flex items-center justify-center text-white shadow-md shadow-rose-200 group-hover:rotate-12 transition-transform duration-300">
-                <i class="fa-solid fa-globe text-lg"></i>
-            </div>
-            <span class="font-bold text-slate-800 text-lg tracking-tight">Xin Chào<span class="text-rose-500">.</span></span>
-        </div>
-        
-        <div class="flex items-center gap-3">
-            <button id="soundToggle" class="px-4 py-2 text-sm font-medium text-slate-600 bg-white/60 hover:bg-white rounded-full shadow-sm border border-slate-200/60 transition-all duration-300 flex items-center gap-2 hover:shadow-md active:scale-95">
-                <i class="fa-solid fa-volume-high text-rose-400"></i>
-                <span id="soundText">Âm thanh</span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content Card -->
-    <main class="w-full max-w-2xl px-4 py-8 z-10 flex flex-col items-center">
-        <div class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl shadow-slate-200/50 text-center relative w-full border border-white/80 animate-float">
-            
-            <!-- Floating Sparkle Icons -->
-            <i class="fa-solid fa-sparkles text-amber-300 absolute top-6 left-8 text-xl animate-sparkle"></i>
-            <i class="fa-solid fa-heart text-rose-300 absolute bottom-6 right-8 text-lg animate-sparkle" style="animation-delay: 1s;"></i>
-
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-100 text-rose-600 text-xs font-semibold mb-6 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                Trang Web Đầu Tiên Của Bạn
-            </div>
-
-            <!-- Greeting Title -->
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-slate-900 leading-tight">
-                <span id="greetingText" class="text-gradient transition-all duration-500 inline-block">Xin Chào Thế Giới!</span>
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="text-slate-600 text-base md:text-lg mb-8 max-w-md mx-auto font-normal leading-relaxed">
-                Chào mừng bạn đến với không gian sáng tạo web. Mọi hành trình lập trình vĩ đại đều bắt đầu từ đây!
-            </p>
-
-            <!-- Interactive Buttons Grid -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <button id="greetBtn" class="w-full sm:w-auto px-7 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-2xl shadow-lg shadow-slate-900/20 hover:shadow-slate-900/30 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i>
-                    <span>Đổi Câu Chào</span>
-                </button>
-                
-                <button id="heartBtn" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-600 font-semibold rounded-2xl shadow-md border border-slate-200/80 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group">
-                    <i class="fa-regular fa-heart text-rose-500 group-hover:scale-125 transition-transform duration-300"></i>
-                    <span>Gửi Yêu Thương (<span id="likeCount">0</span>)</span>
-                </button>
-            </div>
-
-            <!-- Mini Quote Box -->
-            <div id="quoteContainer" class="bg-white/80 rounded-2xl p-4 border border-slate-100 shadow-inner text-xs text-slate-500 italic max-w-lg mx-auto">
-                "Hành trình ngàn dặm bắt đầu bằng một bước chân." – Lão Tử
-            </div>
+    <!-- Nội dung chính -->
+    <main class="main-content">
+        <div class="card">
+            <h1>Chào mừng bạn!</h1>
+            <p>Chọn mục <strong>"Trang Tôn"</strong> trên Sidebar phía bên trái để chuyển sang trang <code>ton.html</code>.</p>
         </div>
     </main>
 
-    <!-- Footer Information -->
-    <footer class="w-full max-w-5xl px-6 py-8 text-center text-xs text-slate-400 z-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200/40">
-        <p>© 2026 Được thiết kế với sự tinh tế và yêu thương.</p>
-        <div class="flex items-center gap-4">
-            <span class="hover:text-slate-600 transition-colors cursor-pointer">HTML5</span>
-            <span>•</span>
-            <span class="hover:text-slate-600 transition-colors cursor-pointer">Tailwind CSS</span>
-            <span>•</span>
-            <span class="hover:text-slate-600 transition-colors cursor-pointer">JavaScript</span>
-        </div>
-    </footer>
-
-    <!-- Interactive JavaScript -->
-    <script>
-        // Array of Vietnamese regional and fun greetings
-        const greetings = [
-            "Xin Chào Thế Giới!",
-            "Chào Bạn Nhé!",
-            "Rất Vui Được Gặp Bạn!",
-            "Chúc Bạn Một Ngày Tốt Lành!",
-            "Xin Chào Việt Nam!",
-            "Hello World!",
-            "Hế Lô Thế Giới!"
-        ];
-
-        // Inspirational quotes array
-        const quotes = [
-            "\"Hành trình ngàn dặm bắt đầu bằng một bước chân.\" – Lão Tử",
-            "\"Lập trình là nghệ thuật biến suy nghĩ thành hiện thực.\"",
-            "\"Mọi chuyên gia đều từng là người mới bắt đầu.\"",
-            "\"Hãy biến những điều phức tạp thành đơn giản.\"",
-            "\"Sáng tạo là niềm vui của trí tuệ.\""
-        ];
-
-        let greetingIndex = 0;
-        let quoteIndex = 0;
-        let likeCount = 0;
-        let soundEnabled = true;
-
-        // Element references
-        const greetingText = document.getElementById('greetingText');
-        const quoteContainer = document.getElementById('quoteContainer');
-        const greetBtn = document.getElementById('greetBtn');
-        const heartBtn = document.getElementById('heartBtn');
-        const likeCountEl = document.getElementById('likeCount');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundText = document.getElementById('soundText');
-
-        // Web Audio API for simple soft chime effects
-        function playChime(freq = 523.25) {
-            if (!soundEnabled) return;
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.6);
-            } catch (e) {
-                console.log("Audio play blocked");
-            }
-        }
-
-        // Toggle Sound State
-        soundToggle.addEventListener('click', () => {
-            soundEnabled = !soundEnabled;
-            soundText.textContent = soundEnabled ? "Âm thanh" : "Tắt tiếng";
-            soundToggle.classList.toggle('opacity-50', !soundEnabled);
-            if (soundEnabled) playChime(659.25);
-        });
-
-        // Greeting Switcher
-        greetBtn.addEventListener('click', () => {
-            greetingIndex = (greetingIndex + 1) % greetings.length;
-            quoteIndex = (quoteIndex + 1) % quotes.length;
-
-            playChime(587.33);
-
-            // Animate text transition
-            greetingText.style.opacity = '0';
-            greetingText.style.transform = 'translateY(-10px)';
-
-            setTimeout(() => {
-                greetingText.textContent = greetings[greetingIndex];
-                quoteContainer.textContent = quotes[quoteIndex];
-
-                greetingText.style.opacity = '1';
-                greetingText.style.transform = 'translateY(0px)';
-            }, 250);
-        });
-
-        // Like/Heart Counter with floating visual feedback
-        heartBtn.addEventListener('click', (e) => {
-            likeCount++;
-            likeCountEl.textContent = likeCount;
-
-            playChime(659.25 + (likeCount % 5) * 50);
-
-            // Create floating heart element
-            const heart = document.createElement('i');
-            heart.className = 'fa-solid fa-heart text-rose-500 absolute text-xl pointer-events-none animate-bounce';
-            
-            const rect = heartBtn.getBoundingClientRect();
-            heart.style.left = `${e.clientX - rect.left}px`;
-            heart.style.top = `${e.clientY - rect.top - 20}px`;
-
-            heartBtn.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 800);
-        });
-    </script>
 </body>
 </html>
